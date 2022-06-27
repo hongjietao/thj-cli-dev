@@ -6,6 +6,9 @@
   "homepage": "",
   "license": "ISC",
   "main": "lib/core.js",
+  "bin": {
+    "thj-cli-dev": "bin/index.js"
+  },
   "directories": {
     "lib": "lib",
     "test": "__tests__"
@@ -18,5 +21,6 @@
   },
   "dependencies": {
     "@thj-cli-dev/utils": "^1.0.2"
-  }
+  },
+  "gitHead": "2c1013bdbaf17212ba7445e7ad2cb11a140d0512"
 }
