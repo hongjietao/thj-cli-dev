@@ -22,5 +22,8 @@
   "dependencies": {
     "@thj-cli-dev/utils": "^1.0.3"
   },
-  "gitHead": "de043327313b10e351f9c955a0abe39012a75369"
+  "gitHead": "de043327313b10e351f9c955a0abe39012a75369",
+  "publishConfig": {
+    "access": "public"
+  }
 }
