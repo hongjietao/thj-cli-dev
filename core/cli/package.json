@@ -20,7 +20,12 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "dependencies": {
-    "@thj-cli-dev/utils": "^1.0.3"
+    "@thj-cli-dev/log": "file:../../utils/log",
+    "@thj-cli-dev/utils": "file:../../utils/utils",
+    "colors": "^1.4.0",
+    "import-local": "^3.1.0",
+    "npmlog": "^6.0.2",
+    "semver": "^7.3.7"
   },
   "gitHead": "de043327313b10e351f9c955a0abe39012a75369",
   "publishConfig": {

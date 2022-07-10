@@ -2,6 +2,18 @@
 
 学习用
 
+# 开发流程
+
+## 安装依赖
+
+### 给子项目安装依赖
+
+eg: 安装 semver， semver 可以用来比较版本号，可以对比的场景比较多
+
+```bash
+lerna add semver core/cli
+```
+
 ## 发布流程
 
 创建 LICENSE.md 文件
@@ -11,4 +23,34 @@
 "publishConfig": {
     "access": "public"
   }
+```
+
+然后执行下面命令，发布版本
+
+```bash
+git add .
+git cm 'feat: xxx'
+git push
+lerna publish
+```
+
+## 创建新包
+
+```bash
+leran create @thj-cli-dev/log
+```
+
+## 思考
+
+Q: reqiure 能加载那些文件，为什么 .md 文件无法加载？
+
+A: reqiure 只能加载 .js, .json, .node 这三种文件。如果是其它文件，会以.js 的方式加载，如果文件里面是 js 代码，则可以解析，否则会报错
+
+```js
+
+.js   -> .js文件 module.exports or exports
+.json -> reqiure 会通过 JSON.parse 解析 json 文件，并输出一个对象
+.node -> process.dlopen() // 基本不用
+
+.any  -> reqiure 默认以 .js 方式加载
 ```

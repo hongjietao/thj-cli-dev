@@ -1,7 +1,5 @@
 {
-  "packages": [
-    "packages/*"
-  ],
+  "packages": ["core/*", "commands/*", "modules/*", "utils/*"],
   "useNx": false,
   "version": "1.0.1"
 }
