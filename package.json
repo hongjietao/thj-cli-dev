@@ -11,8 +11,5 @@
   "license": "ISC",
   "devDependencies": {
     "lerna": "^5.1.6"
-  },
-  "dependencies": {
-    "import-local": "^3.1.0"
   }
 }

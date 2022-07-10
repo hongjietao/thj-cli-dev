@@ -4,6 +4,14 @@
 
 # 开发流程
 
+## 创建新包
+
+eg: 创建 log 包
+
+```bash
+leran create @thj-cli-dev/log
+```
+
 ## 安装依赖
 
 ### 给子项目安装依赖
@@ -32,12 +40,6 @@ git add .
 git cm 'feat: xxx'
 git push
 lerna publish
-```
-
-## 创建新包
-
-```bash
-leran create @thj-cli-dev/log
 ```
 
 ## 思考
