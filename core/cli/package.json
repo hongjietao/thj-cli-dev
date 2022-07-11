@@ -1,6 +1,6 @@
 {
   "name": "@thj-cli-dev/core",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "thj-cli-dev core",
   "author": "陶鸿杰 <18790315365@163.com>",
   "homepage": "",
@@ -20,7 +20,7 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "dependencies": {
-    "@thj-cli-dev/get-npm-info": "^1.0.5",
+    "@thj-cli-dev/get-npm-info": "^1.0.6",
     "@thj-cli-dev/log": "^1.0.4",
     "colors": "^1.4.0",
     "dotenv": "^16.0.1",
