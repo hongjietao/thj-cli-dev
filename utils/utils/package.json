@@ -1,6 +1,6 @@
 {
   "name": "@thj-cli-dev/utils",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "thj-cli-dev utils",
   "author": "陶鸿杰 <18790315365@163.com>",
   "homepage": "",
@@ -16,7 +16,6 @@
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
-  "dependencies": {},
   "gitHead": "de043327313b10e351f9c955a0abe39012a75369",
   "publishConfig": {
     "access": "public"
