@@ -5,7 +5,7 @@
 ## Usage
 
 ```
-const core = require('core');
+const core = require('@thj-cli-dev/core');
 
 // TODO: DEMONSTRATE API
 ```

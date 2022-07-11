@@ -5,7 +5,7 @@
 ## Usage
 
 ```
-const utils = require('utils');
+const utils = require('@thj-cli-dev/utils');
 
 // TODO: DEMONSTRATE API
 ```

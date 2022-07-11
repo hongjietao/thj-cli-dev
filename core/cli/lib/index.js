@@ -13,16 +13,33 @@ const pkg = require("../package.json");
 const constant = require("./constant");
 let config;
 
-function core() {
+async function core() {
   try {
     checkPkgVersion();
     checkNodeVersion();
     checkRoot();
     checkUserHome();
     checkEnv();
+    await checkGlobalUpdate();
   } catch (e) {
     log.error(e.message);
   }
+}
+
+/**
+ * Checks global version
+ *
+ * 1. 获取当前版本号和模块名
+ * 2. 调用npm API, 获取所有版本号
+ * 3. 提取所有版本号，比对那些版本号时大于当前版本的
+ * 4. 获取最新的版本号，提示用户更新版本
+ */
+async function checkGlobalUpdate() {
+  const currentVersion = pkg.version;
+  const npmName = pkg.name;
+  const { getNpmInfo } = require("@thj-cli-dev/get-npm-info");
+  const data = await getNpmInfo(npmName);
+  console.log(data);
 }
 
 /**
