@@ -35,11 +35,24 @@ async function core() {
  * 4. 获取最新的版本号，提示用户更新版本
  */
 async function checkGlobalUpdate() {
+  // 1. 获取当前版本号和模块名
   const currentVersion = pkg.version;
   const npmName = pkg.name;
-  const { getNpmInfo } = require("@thj-cli-dev/get-npm-info");
-  const data = await getNpmInfo(npmName);
-  console.log(data);
+
+  // 2. 调用npm API, 获取所有版本号
+  const { getNpmSemverVersions } = require("@thj-cli-dev/get-npm-info");
+  const lastVersion = await getNpmSemverVersions(currentVersion, npmName);
+  if (lastVersion && semver.gt(lastVersion, currentVersion)) {
+    log.warn(
+      "更新提示",
+      colors.yellow(
+        `请手动更新 ${npmName}, 当前版本 ${currentVersion}, 最新版本 ${lastVersion}
+更新命令： npm install -g ${npmName}`
+      )
+    );
+  }
+
+  // 3. 提取所有版本号，比对那些版本号时大于当前版本的
 }
 
 /**
@@ -56,7 +69,7 @@ function checkEnv() {
     });
   }
   createDefaultConfig();
-  log.info("环境变量：", process.env.CLI_CONFIG_PATH);
+  // log.info("环境变量：", process.env.CLI_CONFIG_PATH);
 }
 
 /**
