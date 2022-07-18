@@ -63,3 +63,18 @@ A: reqiure 只能加载 .js, .json, .node 这三种文件。如果是其它文�
 
 debug 模式调参？
 为什么执行 thj-cli-dev --debug 不起作用
+
+# 其它
+
+## 如何让 Node 支持 ES module
+
+模块化方案：CMD / AMD / require.js
+
+1. CommonJS
+   - 加载模块：require
+   - 输出模块：module.exports / exports.x
+2. ES module
+   - 加载模块：import
+   - 输出模块：export default
+
+<!-- week 4: 2-1 -->

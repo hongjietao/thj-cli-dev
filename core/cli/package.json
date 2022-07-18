@@ -23,6 +23,7 @@
     "@thj-cli-dev/get-npm-info": "^1.0.8",
     "@thj-cli-dev/log": "^1.0.4",
     "colors": "^1.4.0",
+    "commander": "^9.4.0",
     "dotenv": "^16.0.1",
     "import-local": "^3.1.0",
     "npmlog": "^6.0.2",

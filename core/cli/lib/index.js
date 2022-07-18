@@ -8,10 +8,12 @@ const colors = require("colors/safe");
 const userHome = require("user-home");
 const pathExists = require("path-exists").sync;
 const log = require("@thj-cli-dev/log");
+const commander = require("commander");
 
 const pkg = require("../package.json");
 const constant = require("./constant");
-let config;
+
+const program = new commander.Command();
 
 async function core() {
   try {
@@ -21,10 +23,18 @@ async function core() {
     checkUserHome();
     checkEnv();
     await checkGlobalUpdate();
+    registerCommand();
   } catch (e) {
     log.error(e.message);
   }
 }
+
+/**
+ * register Command
+ *
+ * 注册命令
+ */
+function registerCommand() {}
 
 /**
  * Checks global version
