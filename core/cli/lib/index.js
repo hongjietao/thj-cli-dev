@@ -34,7 +34,40 @@ async function core() {
  *
  * 注册命令
  */
-function registerCommand() {}
+function registerCommand() {
+  program
+    .name(Object.keys(pkg.bin)[0])
+    .usage("<command> [options]")
+    .version(pkg.version)
+    .option("--debug", "是否开启调试模式");
+
+  // 开启脚手架模式
+  program.on("option:debug", function () {
+    if (program.debug) {
+      process.env.LOG_LEVEL = "verbose";
+    } else {
+      process.env.LOG_LEVEL = "info";
+    }
+
+    log.level = process.env.LOG_LEVEL;
+
+    log.verbose("test====000----");
+    console.log("log", log.level, program.debug);
+  });
+
+  // 未知命令监听
+  program.on("command:*", function (obj) {
+    const availableCommands = program.commands.map((cmd) => cmd.name);
+    console.log(colors.red("未知的命令：" + obj[0]));
+    console.log(colors.green("可用命令：" + availableCommands.join("、")));
+  });
+
+  if (process.argv.length < 3) {
+    program.outputHelp();
+  }
+  program.parse(process.argv);
+  // console.log(program);
+}
 
 /**
  * Checks global version
@@ -79,7 +112,7 @@ function checkEnv() {
     });
   }
   createDefaultConfig();
-  // log.info("环境变量：", process.env.CLI_CONFIG_PATH);
+  // log.verbose("环境变量：", process.env.CLI_CONFIG_PATH);
 }
 
 /**
@@ -148,4 +181,13 @@ function checkNodeVersion() {
       colors.red(`thj-cli 需要安装 v${lowestNodeVersion} 以上版本的 Node.js`)
     );
   }
+}
+
+function checkArgs(args) {
+  if (args.debug) {
+    process.env.LOG_LEVEL = "verbose";
+  } else {
+    process.env.LOG_LEVEL = "info";
+  }
+  log.level = process.env.LOG_LEVEL;
 }
