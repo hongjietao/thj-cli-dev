@@ -39,7 +39,7 @@ function registerCommand() {
     .name(Object.keys(pkg.bin)[0])
     .usage("<command> [options]")
     .version(pkg.version)
-    .option("-d,--debug", "是否开启调试模式");
+    .option("-d,--debug", "是否开启调试模式", false);
 
   // 开启脚手架模式
   program.on("option:debug", function () {
