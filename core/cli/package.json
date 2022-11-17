@@ -20,8 +20,9 @@
     "test": "echo \"Error: run tests from root\" && exit 1"
   },
   "dependencies": {
-    "@thj-cli-dev/get-npm-info": "^1.0.8",
-    "@thj-cli-dev/log": "^1.0.4",
+    "@thj-cli-dev/get-npm-info": "file:../../utils/get-npm-info",
+    "@thj-cli-dev/log": "file:../../utils/log",
+    "@thj-cli-dev/init": "file:../../commands/init",
     "colors": "^1.4.0",
     "commander": "^9.4.0",
     "dotenv": "^16.0.1",
