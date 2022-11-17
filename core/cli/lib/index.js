@@ -39,20 +39,18 @@ function registerCommand() {
     .name(Object.keys(pkg.bin)[0])
     .usage("<command> [options]")
     .version(pkg.version)
-    .option("--debug", "是否开启调试模式");
+    .option("-d,--debug", "是否开启调试模式");
 
   // 开启脚手架模式
   program.on("option:debug", function () {
-    if (program.debug) {
+    // debug变量在this.opts内
+    if (this.opts().debug) {
       process.env.LOG_LEVEL = "verbose";
     } else {
       process.env.LOG_LEVEL = "info";
     }
-
     log.level = process.env.LOG_LEVEL;
-
-    log.verbose("test====000----");
-    console.log("log", log.level, program.debug);
+    log.verbose("debug 模式已开启！");
   });
 
   // 未知命令监听
@@ -66,7 +64,6 @@ function registerCommand() {
     program.outputHelp();
   }
   program.parse(process.argv);
-  // console.log(program);
 }
 
 /**
