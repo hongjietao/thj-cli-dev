@@ -1,7 +1,7 @@
 {
-  "name": "@thj-cli-dev/exec",
+  "name": "@thj-cli-dev/package",
   "version": "1.0.0",
-  "description": "thj-cli-dev execute package",
+  "description": "thj-cli-dev npm models",
   "author": "陶鸿杰 <18790315365@163.com>",
   "homepage": "https://github.com/hongjietao/thj-cli-dev#readme",
   "license": "ISC",
@@ -25,8 +25,5 @@
   },
   "bugs": {
     "url": "https://github.com/hongjietao/thj-cli-dev/issues"
-  },
-  "dependencies": {
-    "@thj-cli-dev/package": "file:../../models/package"
   }
 }
