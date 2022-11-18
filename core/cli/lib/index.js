@@ -9,6 +9,7 @@ const userHome = require("user-home");
 const pathExists = require("path-exists").sync;
 const log = require("@thj-cli-dev/log");
 const init = require("@thj-cli-dev/init");
+const exec = require("@thj-cli-dev/exec");
 
 const commander = require("commander");
 
@@ -42,7 +43,7 @@ function registerCommand() {
   program
     .command("init [projectName]")
     .option("-f, --force", "是否强制初始化项目")
-    .action(init);
+    .action(exec);
 
   // 开启脚手架模式
   program.on("option:debug", function () {
