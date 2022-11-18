@@ -27,6 +27,8 @@
     "url": "https://github.com/hongjietao/thj-cli-dev/issues"
   },
   "dependencies": {
-    "@thj-cli-dev/package": "file:../../models/package"
+    "@thj-cli-dev/package": "file:../../models/package",
+    "@thj-cli-dev/log": "file:../../utils/log",
+    "@thj-cli-dev/utils": "file:../../utils/utils"
   }
 }
