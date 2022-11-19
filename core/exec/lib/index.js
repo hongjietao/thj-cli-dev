@@ -8,14 +8,18 @@ const SETTTINGS = {
 };
 
 function exec(name, options, cmdObj) {
-  const targetPath = process.env.CLI_TARGET_PATH;
+  let targetPath = process.env.CLI_TARGET_PATH;
   const homePath = process.env.CLI_HOME_PATH;
   const packageName = SETTTINGS[cmdObj.name()];
   const packageVersion = "latest";
+
+  if (!targetPath) {
+    // 生成缓存路径
+    targetPath = "";
+  }
+
   log.verbose("homePath: ", process.env.CLI_HOME_PATH);
-  // const cmdObj = arguments[arguments.length - 1];
-  console.log(name, options, cmdObj.name());
-  // console.log(arguments, "arguments");
+
   const pkg = new Package({
     targetPath,
     packageName,
