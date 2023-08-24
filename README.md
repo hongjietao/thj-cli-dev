@@ -1,6 +1,6 @@
 ## 基于 lerna 开发的脚手架工具
 
-https://www.wolai.com/ftQ9aTJVQwQmsdmQHVZDyQ
+[记录](https://www.wolai.com/ftQ9aTJVQwQmsdmQHVZDyQ)
 
 学习用
 
@@ -45,38 +45,3 @@ git cm 'feat: xxx'
 git push
 lerna publish
 ```
-
-## 思考
-
-Q: reqiure 能加载那些文件，为什么 .md 文件无法加载？
-
-A: reqiure 只能加载 .js, .json, .node 这三种文件。如果是其它文件，会以.js 的方式加载，如果文件里面是 js 代码，则可以解析，否则会报错
-
-```js
-
-.js   -> .js文件 module.exports or exports
-.json -> reqiure 会通过 JSON.parse 解析 json 文件，并输出一个对象
-.node -> process.dlopen() // 基本不用
-
-.any  -> reqiure 默认以 .js 方式加载
-```
-
-## TODO:
-
-debug 模式调参？
-为什么执行 thj-cli-dev --debug 不起作用
-
-# 其它
-
-## 如何让 Node 支持 ES module
-
-模块化方案：CMD / AMD / require.js
-
-1. CommonJS
-   - 加载模块：require
-   - 输出模块：module.exports / exports.x
-2. ES module
-   - 加载模块：import
-   - 输出模块：export default
-
-<!-- week 4: 4-5-->
