@@ -1,7 +1,7 @@
 ## 基于 lerna 开发的脚手架工具
 
 [记录](https://www.wolai.com/ftQ9aTJVQwQmsdmQHVZDyQ)
-
+<a href="https://www.wolai.com/ftQ9aTJVQwQmsdmQHVZDyQ" title="标题"  target="_blank">记录</a>
 学习用
 
 # 开发流程
