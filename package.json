@@ -1,7 +1,7 @@
 {
   "name": "thj-cli-dev",
   "version": "1.0.0",
-  "description": "thj-cli dev",
+  "description": "thj-cli-dev",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,6 +10,6 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "lerna": "^5.1.6"
+    "lerna": "^7.2.0"
   }
 }

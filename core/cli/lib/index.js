@@ -178,7 +178,7 @@ function checkRoot() {
  * 检查当前版本号
  */
 function checkPkgVersion() {
-  log.notice(`thj-cli version: `, pkg.version);
+  log.notice(`thj-cli-dev version: `, pkg.version);
 }
 
 /**
