@@ -27,8 +27,10 @@
     "url": "https://github.com/hongjietao/thj-cli-dev/issues"
   },
   "dependencies": {
-    "@thj-cli-dev/utils": "file:../../utils/utils",
     "@thj-cli-dev/format-path": "file:../../utils/format-path",
+    "@thj-cli-dev/utils": "file:../../utils/utils",
+    "@thj-cli-dev/get-npm-info": "file:../../utils/get-npm-info",
+    "npminstall": "^7.10.0",
     "pkg-dir": "^5.0.0"
   }
 }

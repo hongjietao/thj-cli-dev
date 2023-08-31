@@ -4,6 +4,8 @@ const { isObject } = require("@thj-cli-dev/utils");
 const formatPath = require("@thj-cli-dev/format-path");
 const pkgDir = require("pkg-dir").sync
 const path = require("path");
+const npminstall = require("npminstall")
+const { getDefaultRegistry } = require("@thj-cli-dev/get-npm-info")
 
 class Package {
   constructor(options) {
@@ -15,8 +17,8 @@ class Package {
     }
     // package 的目标路径
     this.targetPath = options.targetPath;
-    // // package 的存储路径
-    // this.storePath = options.storePath;
+    // package 的缓存路径
+    this.storePath = options.storePath;
     // package 的 name
     this.packageName = options.packageName;
     // package 的 version
@@ -27,7 +29,17 @@ class Package {
   exists() { }
 
   // install package
-  install() { }
+  install() {
+    npminstall({
+      root: this.targetPath,
+      storeDir: this.storeDir,
+      registry: getDefaultRegistry(),
+      pkgs: [{
+        name: this.packageName, version: this.packageVersion
+      }]
+
+    })
+  }
 
   // update packagex
   update() { }
