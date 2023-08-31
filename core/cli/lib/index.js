@@ -59,6 +59,7 @@ function registerCommand() {
 
   // 指定targetPath
   program.on("option:targetPath", function () {
+    log.verbose("targetPath：", this.opts().targetPath);
     process.env.CLI_TARGET_PATH = this.opts().targetPath;
   });
 

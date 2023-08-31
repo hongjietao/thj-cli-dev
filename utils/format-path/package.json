@@ -1,8 +1,8 @@
 {
-  "name": "@thj-cli-dev/package",
+  "name": "@thj-cli-dev/format-path",
   "version": "1.0.0",
-  "description": "thj-cli-dev npm models",
-  "author": "陶鸿杰 <18790315365@163.com>",
+  "description": "format path",
+  "author": "taohongjie <18790315365@163.com>",
   "homepage": "https://github.com/hongjietao/thj-cli-dev#readme",
   "license": "ISC",
   "main": "lib/index.js",
@@ -14,21 +14,16 @@
     "lib"
   ],
   "publishConfig": {
-    "access": "public"
+    "registry": "https://registry.npmmirror.com/"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hongjietao/thj-cli-dev.git"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "test": "node ./__tests__/@thj-cli-dev/format-path.test.js"
   },
   "bugs": {
     "url": "https://github.com/hongjietao/thj-cli-dev/issues"
-  },
-  "dependencies": {
-    "@thj-cli-dev/utils": "file:../../utils/utils",
-    "@thj-cli-dev/format-path": "file:../../utils/format-path",
-    "pkg-dir": "^5.0.0"
   }
 }

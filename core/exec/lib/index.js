@@ -19,6 +19,8 @@ function exec(name, options, cmdObj) {
   }
 
   log.verbose("homePath: ", process.env.CLI_HOME_PATH);
+  log.verbose("targetPath: ", process.env.CLI_TARGET_PATH);
+
 
   const pkg = new Package({
     targetPath,
@@ -26,9 +28,10 @@ function exec(name, options, cmdObj) {
     packageVersion,
   });
 
-  console.log(pkg);
+  pkg.getRootFilePath()
+
 }
 
 module.exports = exec;
 
-// thj-cli-dev init -tp D:\\thj-cli-dev\\thj-cli-dev\\commands\\init  --debug
+// thj-cli-dev init -tp D:\\VScode\\thj-cli-dev\\commands\\init  --debug
