@@ -28,9 +28,10 @@
   },
   "dependencies": {
     "@thj-cli-dev/format-path": "file:../../utils/format-path",
-    "@thj-cli-dev/utils": "file:../../utils/utils",
     "@thj-cli-dev/get-npm-info": "file:../../utils/get-npm-info",
+    "@thj-cli-dev/utils": "file:../../utils/utils",
     "npminstall": "^7.10.0",
+    "path-exists": "4.0.0",
     "pkg-dir": "^5.0.0"
   }
 }

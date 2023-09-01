@@ -3,9 +3,10 @@
 const { isObject } = require("@thj-cli-dev/utils");
 const formatPath = require("@thj-cli-dev/format-path");
 const pkgDir = require("pkg-dir").sync
+const pathExists = require("path-exists").sync
 const path = require("path");
 const npminstall = require("npminstall")
-const { getDefaultRegistry } = require("@thj-cli-dev/get-npm-info")
+const { getDefaultRegistry, getNpmLatestVersion } = require("@thj-cli-dev/get-npm-info")
 
 class Package {
   constructor(options) {
@@ -18,19 +19,44 @@ class Package {
     // package 的目标路径
     this.targetPath = options.targetPath;
     // package 的缓存路径
-    this.storePath = options.storePath;
+    this.storeDir = options.storeDir;
     // package 的 name
     this.packageName = options.packageName;
     // package 的 version
     this.packageVersion = options.packageVersion;
+    // package 的缓存目录前缀
+    this.npmFilePathPrefix = this.packageName.replace('/', '_')
   }
 
+  get cacheFilePath() {
+    return path.resolve(this.storeDir, `_${this.npmFilePathPrefix}@${this.packageVersion}@${this.packageName}`)
+  }
+
+  // get latest version
+  async prepare() {
+    if (this.packageVersion === 'latest') {
+      this.packageVersion = await getNpmLatestVersion(this.packageName, getDefaultRegistry())
+    }
+    console.log(this.packageVersion)
+  }
+
+
   // 判断当前Package是否存在
-  exists() { }
+  async exists() {
+    if (this.storeDir) {
+      // 缓存模式
+      await this.prepare()
+      return pathExists(this.cacheFilePath)
+    } else {
+      return pathExists(this.storeDir)
+    }
+
+  }
 
   // install package
-  install() {
-    npminstall({
+  async install() {
+    await prepare()
+    return npminstall({
       root: this.targetPath,
       storeDir: this.storeDir,
       registry: getDefaultRegistry(),

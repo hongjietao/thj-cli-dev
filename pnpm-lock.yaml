@@ -82,6 +82,9 @@ importers:
       npminstall:
         specifier: ^7.10.0
         version: 7.10.0
+      path-exists:
+        specifier: 4.0.0
+        version: 4.0.0
       pkg-dir:
         specifier: ^5.0.0
         version: 5.0.0

@@ -24,6 +24,9 @@ async function core() {
     registerCommand();
   } catch (e) {
     log.error(e.message);
+
+    if (process.env.LOG_LEVEL === 'verbose') { console.log(e) }
+
   }
 }
 
@@ -38,7 +41,8 @@ function registerCommand() {
     .usage("<command> [options]")
     .version(pkg.version)
     .option("-d,--debug", "是否开启调试模式", false)
-    .option("-tp, --targetPath <targetPath>", "是否指定本地调试文件路径", "");
+    .option("-tp, --targetPath <targetPath>", "是否指定本地调试文件路径", "")
+
 
   program
     .command("init [projectName]")
