@@ -2,7 +2,7 @@
  * @Author: taohongjie 
  * @Date: 2023-09-01 20:40:41 
  * @Last Modified by: taohongjie
- * @Last Modified time: 2023-09-01 20:59:54
+ * @Last Modified time: 2023-09-01 22:03:20
  */
 "use strict";
 
@@ -23,12 +23,15 @@ async function exec(name, options, cmdObj) {
   let targetPath = process.env.CLI_TARGET_PATH;
   let storeDir = ''
   let pkg;
-  // FIXME: 此处 homePath 无法解析
-  const homePath = process.env.CLI_HOME_PATH;
-  const packageName = SETTLINGS[cmdObj.name()];
+
+  const homePath = process.env.CLI_CONFIG_PATH;
+  // const packageName = SETTLINGS[cmdObj.name()];
+  const packageName = '@thj-cli-dev/log';
+
   const packageVersion = "latest";
 
   log.verbose("homePath: ", homePath);
+
 
   if (!targetPath) {
     // 生成缓存路径
@@ -46,9 +49,12 @@ async function exec(name, options, cmdObj) {
       packageVersion,
     });
 
-    if (pkg.exists()) {
+
+    if (await pkg.exists()) {
       // update package
+      await pkg.update();
     } else {
+
       await pkg.install();
     }
 
@@ -70,5 +76,8 @@ async function exec(name, options, cmdObj) {
 }
 
 module.exports = exec;
+
+// package test
+// thj-cli-dev init test-project --force --debug
 
 // thj-cli-dev init -tp D:\\VScode\\thj-cli-dev\\commands\\init  --debug

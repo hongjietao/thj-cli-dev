@@ -5,17 +5,16 @@ module.exports = core;
 const path = require("path");
 const semver = require("semver");
 const colors = require("colors/safe");
-const userHome = require("user-home");
+const { homedir } = require("os");
 const pathExists = require("path-exists").sync;
 const log = require("@thj-cli-dev/log");
 const init = require("@thj-cli-dev/init");
 const exec = require("@thj-cli-dev/exec");
-
 const commander = require("commander");
-
 const pkg = require("../package.json");
 const constant = require("./constant");
 
+const userHome = homedir()
 const program = new commander.Command();
 
 async function core() {
@@ -134,7 +133,8 @@ function checkEnv() {
       path: dotEnvPath,
     });
   }
-  createDefaultConfig();
+  const config = createDefaultConfig(); // 准备基础配置
+  log.verbose('环境变量', config);
 }
 
 /**
@@ -154,6 +154,8 @@ function createDefaultConfig() {
   }
 
   process.env.CLI_CONFIG_PATH = cliConfig.cliHome;
+  return cliConfig;
+
 }
 
 /**
@@ -200,7 +202,7 @@ function checkNodeVersion() {
   // 2. 对比最低版本号
   if (!semver.gte(curNodeVersion, lowestNodeVersion)) {
     throw new Error(
-      colors.red(`thj-cli 需要安装 v${lowestNodeVersion} 以上版本的 Node.js`)
+      colors.red(`thj-cli-dev 需要安装 v${lowestNodeVersion} 以上版本的 Node.js`)
     );
   }
 }

@@ -3,13 +3,13 @@ const axios = require("axios");
 const urlJoin = require("url-join");
 const semver = require("semver");
 
-function getNpmInfo(npmName, registry) {
+async function getNpmInfo(npmName, registry) {
   if (!npmName) {
     return null;
   }
   const registryUrl = registry || getDefaultRegistry();
   const npmInfoUrl = urlJoin(registryUrl, npmName);
-  return axios
+  return await axios
     .get(npmInfoUrl)
     .then((res) => {
       if (res.status === 200) {
@@ -30,7 +30,6 @@ function getDefaultRegistry(isOriginal = false) {
 
 async function getNpmVersion(npmName, registry) {
   const data = await getNpmInfo(npmName, registry);
-
   if (data) {
     return Object.keys(data.versions);
   } else {
@@ -53,6 +52,7 @@ async function getNpmSemverVersions(baseVersion, npmName, registry) {
 }
 
 async function getNpmLatestVersion(npmName, registry) {
+
   const versions = await getNpmVersion(npmName, registry)
 
   if (versions) {
@@ -61,4 +61,4 @@ async function getNpmLatestVersion(npmName, registry) {
   return null;
 }
 
-module.exports = { getNpmInfo, getNpmVersion, getNpmSemverVersions, getNpmLatestVersion };
+module.exports = { getNpmInfo, getNpmVersion, getNpmSemverVersions, getNpmLatestVersion, getDefaultRegistry };
