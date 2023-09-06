@@ -153,9 +153,9 @@ function createDefaultConfig() {
     cliConfig["cliHome"] = path.join(userHome, constant.DEFAULT_CLI_HOME);
   }
 
-  process.env.CLI_CONFIG_PATH = cliConfig.cliHome;
+  process.env.CLI_HOME_PATH = cliConfig.cliHome;
+  log.verbose('process.env.CLI_HOME_PATH', process.env.CLI_HOME_PATH);
   return cliConfig;
-
 }
 
 /**

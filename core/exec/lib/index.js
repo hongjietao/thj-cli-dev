@@ -2,7 +2,7 @@
  * @Author: taohongjie 
  * @Date: 2023-09-01 20:40:41 
  * @Last Modified by: taohongjie
- * @Last Modified time: 2023-09-01 22:49:30
+ * @Last Modified time: 2023-09-06 15:07:54
  */
 "use strict";
 
@@ -10,7 +10,7 @@ const Package = require("@thj-cli-dev/package");
 const log = require("@thj-cli-dev/log");
 const path = require("path");
 
-const SETTLINGS = {
+const SETTINGS = {
   init: "@thj-cli-dev/init",
 };
 
@@ -18,25 +18,30 @@ const CACHE_DIR = 'dependencies'
 
 
 
-async function exec(name, options, cmdObj) {
+async function exec() {
 
   let targetPath = process.env.CLI_TARGET_PATH;
+  const homePath = process.env.CLI_HOME_PATH;
   let storeDir = ''
   let pkg;
-
-  const homePath = process.env.CLI_CONFIG_PATH;
-  // const packageName = SETTLINGS[cmdObj.name()];
-  const packageName = '@thj-cli-dev/log';
-
-  const packageVersion = "latest";
-
+  log.verbose("targetPath: ", targetPath);
   log.verbose("homePath: ", homePath);
+
+  // const packageName = SETTLINGS[cmdObj.name()];
+  // const packageName = '@thj-cli-dev/log';
+  // const packageVersion = "latest";
+
+  const cmdObj = arguments[arguments.length - 1];
+  const cmdName = cmdObj.name();
+  const packageName = SETTINGS[cmdName];
+  const packageVersion = 'latest';
 
 
   if (!targetPath) {
     // 生成缓存路径
     targetPath = path.resolve(homePath, CACHE_DIR);
     storeDir = path.resolve(targetPath, 'node_modules');
+
     log.verbose("targetPath: ", targetPath);
     log.verbose("storeDir: ", storeDir);
 
@@ -44,8 +49,8 @@ async function exec(name, options, cmdObj) {
 
     pkg = new Package({
       targetPath,
-      packageName,
       storeDir,
+      packageName,
       packageVersion,
     });
 
@@ -67,13 +72,13 @@ async function exec(name, options, cmdObj) {
   }
 
 
-  console.log(await pkg.exists());
+  // console.log(await pkg.exists());
   const rootFile = pkg.getRootFilePath();
   // FIXME: 此处root file有问题
   if (rootFile) {
 
     // 在当前进程中使用 
-    require(rootFile).apply(null, arguments);
+    require(rootFile).apply(null, Array.from(arguments));
 
     // 
   }

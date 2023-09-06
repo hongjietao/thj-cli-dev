@@ -26,11 +26,11 @@ class Package {
     // package 的 version
     this.packageVersion = options.packageVersion;
     // package 的缓存目录前缀
-    this.npmFilePathPrefix = this.packageName.replace('/', '_')
+    this.cacheFilePathPrefix = this.packageName.replace('/', '_')
   }
 
   get cacheFilePath() {
-    return path.resolve(this.storeDir, `_${this.npmFilePathPrefix}@${this.packageVersion}@${this.packageName}`)
+    return path.resolve(this.storeDir, `_${this.cacheFilePathPrefix}@${this.packageVersion}@${this.packageName}`)
   }
 
   /**
@@ -38,7 +38,7 @@ class Package {
    * @returns {string} version
    */
   getLatestCacheFilePath() {
-    return path.resolve(this.storeDir, `_${this.npmFilePathPrefix}@${this.packageVersion}@${this.packageName}`)
+    return path.resolve(this.storeDir, `_${this.cacheFilePathPrefix}@${this.packageVersion}@${this.packageName}`)
   }
 
   /**
@@ -46,7 +46,7 @@ class Package {
    * @returns {string} version
    */
   getSpecificCacheFilePath(packageVersion) {
-    return path.resolve(this.storeDir, `_${this.npmFilePathPrefix}@${packageVersion}@${this.packageName}`)
+    return path.resolve(this.storeDir, `_${this.cacheFilePathPrefix}@${packageVersion}@${this.packageName}`)
   }
 
   // get latest version
@@ -73,7 +73,7 @@ class Package {
       return pathExists(this.cacheFilePath)
     } else {
 
-      return pathExists(this.storeDir)
+      return pathExists(this.targetPath)
     }
 
   }
@@ -86,7 +86,8 @@ class Package {
       storeDir: this.storeDir,
       registry: getDefaultRegistry(),
       pkgs: [{
-        name: this.packageName, version: this.packageVersion
+        name: this.packageName,
+        version: this.packageVersion
       }]
 
     })
@@ -109,11 +110,14 @@ class Package {
         storeDir: this.storeDir,
         registry: getDefaultRegistry(),
         pkgs: [{
-          name: this.packageName, version: latestPackageVersion
+          name: this.packageName,
+          version: latestPackageVersion
         }]
 
       })
 
+      this.packageVersion = latestPackageVersion
+    } else {
       this.packageVersion = latestPackageVersion
     }
   }
@@ -139,11 +143,11 @@ class Package {
       }
       return null;
     }
-    if (this.storeDir) {
-      _getRootFile(this.cacheFilePath);
-    } else {
-      _getRootFile(this.targetPath)
 
+    if (this.storeDir) {
+      return _getRootFile(this.cacheFilePath);
+    } else {
+      return _getRootFile(this.targetPath);
     }
 
   }
