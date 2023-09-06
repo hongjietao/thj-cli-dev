@@ -2,7 +2,7 @@
  * @Author: taohongjie 
  * @Date: 2023-09-01 20:40:41 
  * @Last Modified by: taohongjie
- * @Last Modified time: 2023-09-01 22:03:20
+ * @Last Modified time: 2023-09-01 22:49:30
  */
 "use strict";
 
@@ -69,8 +69,13 @@ async function exec(name, options, cmdObj) {
 
   console.log(await pkg.exists());
   const rootFile = pkg.getRootFilePath();
+  // FIXME: 此处root file有问题
   if (rootFile) {
+
+    // 在当前进程中使用 
     require(rootFile).apply(null, arguments);
+
+    // 
   }
 
 }

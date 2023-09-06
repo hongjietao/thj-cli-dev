@@ -123,8 +123,8 @@ class Package {
 
     function _getRootFile(targetPath) {
       // 1. 获取 package.json 所在目录
-      const dir = targetPath
-      // const dir =   pkgDir(targetPath)
+      // const dir = targetPath
+      const dir = pkgDir(targetPath)
       console.log('dir: ', dir)
       if (dir) {
         // 2. 读取 package.json
