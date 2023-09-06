@@ -1,6 +1,6 @@
 {
   "name": "@thj-cli-dev/command",
-  "version": "1.0.0",
+  "version": "1.0.9",
   "description": "> TODO: description",
   "keywords": [
     "command"
@@ -30,8 +30,8 @@
     "url": "https://github.com/hongjietao/thj-cli-dev/issues"
   },
   "dependencies": {
+    "@thj-cli-dev/log": "file:../../utils/log",
     "colors": "^1.4.0",
-    "semver": "^7.3.7",
-    "@thj-cli-dev/log": "file:../../utils/log"
+    "semver": "^7.3.7"
   }
 }

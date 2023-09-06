@@ -1,6 +1,6 @@
 {
   "name": "@thj-cli-dev/exec",
-  "version": "1.0.0",
+  "version": "1.0.9",
   "description": "thj-cli-dev execute package",
   "author": "陶鸿杰 <18790315365@163.com>",
   "homepage": "https://github.com/hongjietao/thj-cli-dev#readme",
@@ -27,8 +27,8 @@
     "url": "https://github.com/hongjietao/thj-cli-dev/issues"
   },
   "dependencies": {
-    "@thj-cli-dev/package": "file:../../models/package",
     "@thj-cli-dev/log": "file:../../utils/log",
+    "@thj-cli-dev/package": "file:../../models/package",
     "@thj-cli-dev/utils": "file:../../utils/utils"
   }
 }
