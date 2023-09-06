@@ -56,9 +56,9 @@ class Package {
       // 解决目录不存在的问题
       fse.mkdirpSync(this.storeDir);
     }
-    if (this.packageVersion === 'latest') {
 
-      this.packageVersion = await getNpmLatestVersion(this.packageName, getDefaultRegistry())
+    if (this.packageVersion === 'latest') {
+      this.packageVersion = await getNpmLatestVersion(this.packageName, getDefaultRegistry(true))
 
     }
   }
@@ -129,7 +129,7 @@ class Package {
       // 1. 获取 package.json 所在目录
       // const dir = targetPath
       const dir = pkgDir(targetPath)
-      console.log('dir: ', dir)
+      console.log('dir: ', dir, targetPath)
       if (dir) {
         // 2. 读取 package.json
         const pkgFile = require(path.resolve(dir, 'package.json'));
@@ -143,7 +143,8 @@ class Package {
       }
       return null;
     }
-
+    console.log("this.storeDir:", this.storeDir)
+    console.log("this.cacheFilePath:", this.cacheFilePath)
     if (this.storeDir) {
       return _getRootFile(this.cacheFilePath);
     } else {

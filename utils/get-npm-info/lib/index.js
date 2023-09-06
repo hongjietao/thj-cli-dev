@@ -7,6 +7,7 @@ async function getNpmInfo(npmName, registry) {
   if (!npmName) {
     return null;
   }
+
   const registryUrl = registry || getDefaultRegistry();
   const npmInfoUrl = urlJoin(registryUrl, npmName);
   return await axios
@@ -54,7 +55,6 @@ async function getNpmSemverVersions(baseVersion, npmName, registry) {
 async function getNpmLatestVersion(npmName, registry) {
 
   const versions = await getNpmVersion(npmName, registry)
-
   if (versions) {
     return versions.sort((a, b) => semver.gt(b, a))[0];
   }

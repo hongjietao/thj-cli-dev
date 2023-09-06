@@ -2,7 +2,7 @@
  * @Author: taohongjie 
  * @Date: 2023-09-01 20:40:41 
  * @Last Modified by: taohongjie
- * @Last Modified time: 2023-09-06 15:07:54
+ * @Last Modified time: 2023-09-06 21:23:06
  */
 "use strict";
 
@@ -59,7 +59,6 @@ async function exec() {
       // update package
       await pkg.update();
     } else {
-
       await pkg.install();
     }
 
@@ -72,9 +71,7 @@ async function exec() {
   }
 
 
-  // console.log(await pkg.exists());
   const rootFile = pkg.getRootFilePath();
-  // FIXME: 此处root file有问题
   if (rootFile) {
 
     // 在当前进程中使用 
