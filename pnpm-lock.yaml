@@ -14,6 +14,15 @@ importers:
 
   commands/init:
     dependencies:
+      '@thj-cli-dev/command':
+        specifier: file:../../models/command
+        version: file:models/command
+      '@thj-cli-dev/log':
+        specifier: file:../../utils/log
+        version: file:utils/log
+      '@thj-cli-dev/package':
+        specifier: file:../../models/package
+        version: file:models/package
       inquirer:
         specifier: ^9.2.10
         version: 9.2.10
@@ -4665,7 +4674,14 @@ packages:
     resolution: {directory: commands/init, type: directory}
     name: '@thj-cli-dev/init'
     dependencies:
+      '@thj-cli-dev/command': file:models/command
+      '@thj-cli-dev/log': file:utils/log
+      '@thj-cli-dev/package': file:models/package
       inquirer: 9.2.10
+    transitivePeerDependencies:
+      - bluebird
+      - debug
+      - supports-color
     dev: false
 
   file:core/exec:
@@ -4679,6 +4695,15 @@ packages:
       - bluebird
       - debug
       - supports-color
+    dev: false
+
+  file:models/command:
+    resolution: {directory: models/command, type: directory}
+    name: '@thj-cli-dev/command'
+    dependencies:
+      '@thj-cli-dev/log': file:utils/log
+      colors: 1.4.0
+      semver: 7.5.4
     dev: false
 
   file:models/package:

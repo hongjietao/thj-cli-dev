@@ -30,6 +30,9 @@
     "url": "https://github.com/hongjietao/thj-cli-dev/issues"
   },
   "dependencies": {
-    "inquirer": "^9.2.10"
+    "inquirer": "^9.2.10",
+    "@thj-cli-dev/command": "file:../../models/command",
+    "@thj-cli-dev/package": "file:../../models/package",
+    "@thj-cli-dev/log": "file:../../utils/log"
   }
 }
