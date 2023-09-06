@@ -1,11 +1,11 @@
 {
-  "name": "@thj-cli-dev/init",
+  "name": "@thj-cli-dev/command",
   "version": "1.0.0",
-  "description": "thj-cli-dev init",
+  "description": "> TODO: description",
   "keywords": [
-    "init"
+    "command"
   ],
-  "author": "陶鸿杰 <18790315365@163.com>",
+  "author": "taohongjie <18790315365@163.com>",
   "homepage": "https://github.com/hongjietao/thj-cli-dev#readme",
   "license": "ISC",
   "main": "lib/index.js",
@@ -24,12 +24,14 @@
     "url": "git+https://github.com/hongjietao/thj-cli-dev.git"
   },
   "scripts": {
-    "test": "echo \"Error: run tests from root\" && exit 1"
+    "test": "node ./__tests__/@thj-cli-dev/command.test.js"
   },
   "bugs": {
     "url": "https://github.com/hongjietao/thj-cli-dev/issues"
   },
   "dependencies": {
-    "inquirer": "^9.2.10"
+    "colors": "^1.4.0",
+    "semver": "^7.3.7",
+    "@thj-cli-dev/log": "file:../../utils/log"
   }
 }
